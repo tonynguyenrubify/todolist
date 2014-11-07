@@ -1,10 +1,10 @@
 <% content_for :header do %>
 	<span><%= link_to "My Lists ", lists_url %><b>This list:</b></span>
-	<%= link_to "Edit", edit_list_url, id: "edit_this_link", class: "ajax-link" %> | <a href="#" class ="show_drag_img" > Reorder</a> <a href="#" class ="show_done_drag_img display_none"  >  I'm done Reorder</a>
+	<%= link_to "Edit", edit_list_url, id: "edit_this_link", class: "ajax-link" %> |  <a href="#" class ="show_drag_img" > Reorder</a> <a href="#" class ="show_done_drag_img display_none"  >  I'm done Reorder</a>
 <% end %>
-
+<br />
+<p><%= @list.name %></p>
 <div class="content_list">
-	<p><%= @list.name %></p>
 	<div><%= render_item_list(@list) %></div>
 	<div id="new_item_form_container"></div>
 	<a href="#" class="show_hide">Add another item</a>

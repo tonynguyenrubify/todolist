@@ -1,6 +1,9 @@
 <li>
-	<%= image_tag "drag.gif", :title => "title", :class => " drag_img drag_img_none" %>	
+	<% if reorder == true %>
+		<%= image_tag "drag.gif", :title => "title", :class => " drag_img" %>	
+	<% else %>
 	<%= item_form_builder.check_box :completed, class: "item-complete-checkbox", 'data-item-id' => item_form_builder.object.id, :checked => un_done == false %>					
+	<% end %>
 	<%= item_form_builder.object.name %>
 	<%= item_form_builder.hidden_field :name %>	
 	<%= item_form_builder.hidden_field :position, :value => item_form_builder.object.position, class: "item-hidden-field-position" %>

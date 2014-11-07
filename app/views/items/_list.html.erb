@@ -1,13 +1,13 @@
 <%= form_for list, :html => {:id => un_done ? 'form_not_done' : 'form_done'} do |list_form| %>
-	<ul>
-		<%= list_form.fields_for :items do |item_form_builder| %>
-			<% if sorting == true %>
-				<%= render :partial => "/items/form", locals: {item_form_builder: item_form_builder, un_done: un_done} %>
-			<% else %>
-				<% if item_form_builder.object.new_record? == false and (un_done ? item_form_builder.object.incompleted? : item_form_builder.object.completed?) %>				
+	<ul id ='not_done_list'>
+			<%= list_form.fields_for :items do |item_form_builder| %>
+				<% if sorting == true %>
 					<%= render :partial => "/items/form", locals: {item_form_builder: item_form_builder, un_done: un_done} %>
-				<% end %>		
+				<% else %>
+					<% if item_form_builder.object.new_record? == false and (un_done ? item_form_builder.object.incompleted? : item_form_builder.object.completed?) %>				
+						<%= render :partial => "/items/form", locals: {item_form_builder: item_form_builder, un_done: un_done, reorder: reorder} %>
+					<% end %>		
+				<% end %>
 			<% end %>
-		<% end %>
 	</ul>
 <% end %>

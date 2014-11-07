@@ -22,7 +22,7 @@ class ListsController < ApplicationController
   def show
     @list = current_user.lists.find(params[:id])
     @item = @list.items.new
-    #render layout: false if params[:is_ajax] == true
+    render layout: false if params[:is_ajax] == true
   end
   
   def edit
@@ -58,7 +58,5 @@ class ListsController < ApplicationController
       flash[:error] = "Could not delete list. Some thing wrong ?"
       redirect_to lists_url
     end
-  end  
-  
-            
+  end             
 end
